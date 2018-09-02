@@ -23,9 +23,27 @@ namespace Walker
 
     public double PanelHeight { get; set; }
 
-    public double MainWindowWidth => PanelWidth + 2 * RowColumnWidthHeight;
+    public double MainWindowWidth
+    {
+      get
+      {
+        var screenWidth = System.Windows.SystemParameters.WorkArea.Width;
+        var desiredWindowWidth = PanelWidth + 2 * RowColumnWidthHeight;
 
-    public double MainWindowHeight => PanelHeight + 2 * RowColumnWidthHeight;
+        return desiredWindowWidth < screenWidth ? desiredWindowWidth : screenWidth;
+      }
+    }
+
+    public double MainWindowHeight
+    {
+      get
+      {
+        var screenHeight = System.Windows.SystemParameters.WorkArea.Height - 30;
+        var desiredWindowHeight = PanelHeight + 2 * RowColumnWidthHeight;
+
+        return desiredWindowHeight < screenHeight ? desiredWindowHeight : screenHeight;
+      }
+    }
 
     public List<TubeModel> Tubes { get; set; }
 
