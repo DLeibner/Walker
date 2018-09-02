@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -23,8 +24,8 @@ namespace Walker
 
       try
       {
-        Diameter = Double.Parse(file.Descendants("TubesheetDiameter").First().Value);
-        Pitch = Double.Parse(file.Descendants("TubesheetPitch").First().Value);
+        Diameter = Double.Parse(file.Descendants("TubesheetDiameter").First().Value, CultureInfo.InvariantCulture);
+        Pitch = Double.Parse(file.Descendants("TubesheetPitch").First().Value, CultureInfo.InvariantCulture);
 
         var tubes = from item in file.Descendants("Tube")
           select new TubeModel

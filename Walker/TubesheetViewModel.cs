@@ -23,6 +23,10 @@ namespace Walker
 
     public double PanelHeight { get; set; }
 
+    public double MainWindowWidth => PanelWidth + 2 * RowColumnWidthHeight;
+
+    public double MainWindowHeight => PanelHeight + 2 * RowColumnWidthHeight;
+
     public List<TubeModel> Tubes { get; set; }
 
     public ObservableCollection<CanvasTubeModel> CanvasTubes { get; set; }
@@ -50,9 +54,9 @@ namespace Walker
         CanvasTubes.Add(new CanvasTubeModel
         {
           Tube = tube,
-          Right = tube.Row * RowColumnWidthHeight,
+          Left = tube.Row * RowColumnWidthHeight,
           Top = tube.Column * RowColumnWidthHeight,
-          RowColumnWidthHeight = RowColumnWidthHeight
+          Size = TubesheetDiameter  // TODO bind to property here
         });
       }
     }
