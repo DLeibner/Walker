@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Media;
 
 namespace Walker
 {
@@ -21,5 +22,31 @@ namespace Walker
       }
 
       public double Size { get; set; }
+
+      public Brush Color
+      {
+        get
+        {
+          Brush color;
+
+          switch (Tube.Status)
+          {
+            case "Unknown":
+              color = Brushes.Gray;
+              break;
+            case "Plugged":
+              color = Brushes.Black;
+              break;
+            case "Critical":
+              color = Brushes.Red;
+              break;
+            default:
+              color = Brushes.White;
+              break;
+          }
+
+          return color;
+        }
+      }
     }
 }

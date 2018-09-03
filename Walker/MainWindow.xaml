@@ -30,7 +30,7 @@
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Ellipse Fill="#FFF4F4F5" Width="{Binding Size}" Height="{Binding Size}" Stroke="Black" ToolTip="{Binding Message}"/>
+                        <Ellipse Fill="{Binding Color}" Width="{Binding Size}" Height="{Binding Size}" Stroke="Black" ToolTip="{Binding Message}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
