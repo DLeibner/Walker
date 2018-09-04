@@ -50,9 +50,10 @@ namespace Walker
     public ObservableCollection<CanvasTubeModel> CanvasTubes { get; set; }
 
     // Parse file
-    void ParseXmlFile()
+    void ParseXmlFile() 
     {
-      Tubes = Parser.GetTubesFromFile(@"D:\other\simple\Walker\Tubesheet.xml"); // TODO path
+      var file = System.Environment.CurrentDirectory + "\\Tubesheet.xml";
+      Tubes = Parser.GetTubesFromFile(file);
       TubesheetDiameter = Parser.Diameter;
       TubesheetPitch = Parser.Pitch;
     }
