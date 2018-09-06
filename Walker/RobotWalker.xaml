@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Walker.RobotWalker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Walker"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:RobotWalkerViewModel/>
+    </UserControl.DataContext>
+    <Canvas>
+        <Line 
+            X1="{Binding GreenLine.First.X}"
+            Y1="{Binding GreenLine.First.Y}"
+            X2="{Binding GreenLine.Second.X}"
+            Y2="{Binding GreenLine.Second.Y}"
+            Stroke="Green" StrokeThickness="5"
+            StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+            <!--<Line.RenderTransform>
+                <RotateTransform Angle="0"/>
+            </Line.RenderTransform>-->
+        </Line>
+        <Line
+            X1="{Binding BrownLine.First.X}"
+            Y1="{Binding BrownLine.First.Y}"
+            X2="{Binding BrownLine.Second.X}"
+            Y2="{Binding BrownLine.Second.Y}"
+            Stroke="Brown" StrokeThickness="5"
+            StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+            <!--<Line.RenderTransform>
+                <RotateTransform Angle="0"/>
+                <TranslateTransform></TranslateTransform>
+            </Line.RenderTransform>-->
+        </Line>
+    </Canvas>
+</UserControl>
