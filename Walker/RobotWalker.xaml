@@ -6,15 +6,12 @@
              xmlns:local="clr-namespace:Walker"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <local:RobotWalkerViewModel/>
-    </UserControl.DataContext>
     <Canvas>
         <Line 
-            X1="{Binding GreenLine.First.X}"
-            Y1="{Binding GreenLine.First.Y}"
-            X2="{Binding GreenLine.Second.X}"
-            Y2="{Binding GreenLine.Second.Y}"
+            X1="{Binding Walker.GreenLine.First.X}"
+            Y1="{Binding Walker.GreenLine.First.Y}"
+            X2="{Binding Walker.GreenLine.Second.X}"
+            Y2="{Binding Walker.GreenLine.Second.Y}"
             Stroke="Green" StrokeThickness="5"
             StrokeStartLineCap="Round" StrokeEndLineCap="Round">
             <!--<Line.RenderTransform>
@@ -22,10 +19,10 @@
             </Line.RenderTransform>-->
         </Line>
         <Line
-            X1="{Binding BrownLine.First.X}"
-            Y1="{Binding BrownLine.First.Y}"
-            X2="{Binding BrownLine.Second.X}"
-            Y2="{Binding BrownLine.Second.Y}"
+            X1="{Binding Walker.BrownLine.First.X}"
+            Y1="{Binding Walker.BrownLine.First.Y}"
+            X2="{Binding Walker.BrownLine.Second.X}"
+            Y2="{Binding Walker.BrownLine.Second.Y}"
             Stroke="Brown" StrokeThickness="5"
             StrokeStartLineCap="Round" StrokeEndLineCap="Round">
             <!--<Line.RenderTransform>

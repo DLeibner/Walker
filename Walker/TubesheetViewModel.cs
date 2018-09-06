@@ -6,12 +6,15 @@ namespace Walker
 {
   public class TubesheetViewModel : PropertyChangedNotifier
   {
-    public TubesheetViewModel()
+    public TubesheetViewModel(RobotWalkerViewModel robot)
     {
       Tubes = new List<TubeModel>();
       CanvasTubes = new ObservableCollection<CanvasTubeModel>();
+      Walker = robot;
       InitializeViewModel();
     }
+
+    public RobotWalkerViewModel Walker { get; set; }
 
     public double TubesheetDiameter { get; set; }
 

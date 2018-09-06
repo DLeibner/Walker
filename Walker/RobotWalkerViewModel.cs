@@ -1,26 +1,88 @@
 ﻿namespace Walker
 {
-  public class RobotWalkerViewModel
+  public class RobotWalkerViewModel : PropertyChangedNotifier
   {
     public RobotWalkerViewModel()
     {
       Initialize();
     }
 
-    public Point StartPoint { get; set; }
+    private Point _startPoint;
+    public Point StartPoint
+    {
+      get { return _startPoint; }
+      //set { _startPoint = value; }
+    }
 
-    public Point EndPoint { get; set; }
+    private Point _endPoint;
+    public Point EndPoint
+    {
+      get { return _endPoint; }
+      //set { _endPoint = value; }
+    }
+
+    private Point _startRowColumn;
+    public Point StartRowColumn
+    {
+      get
+      {
+        _startPoint.X = _startRowColumn.X * (27.43 + 16.8);
+        _startPoint.Y = _startRowColumn.Y * (27.43 + 16.8);
+        return _startRowColumn;
+      }
+      set
+      {
+        _startRowColumn = value;
+        //_startPoint.X = value.X * (27.43 + 16.8);
+        //_startPoint.Y = value.Y * (27.43 + 16.8);
+      }
+    }
+
+    private Point _endRowColumn;
+    public Point EndRowColumn
+    {
+      get
+      {
+        _endPoint.X = _endRowColumn.X * (27.43 + 16.8);
+        _endPoint.Y = _endRowColumn.Y * (27.43 + 16.8);
+        return _endRowColumn;
+      }
+      set
+      {
+        _endRowColumn = value;
+        _endPoint.X = value.X * (27.43 + 16.8);
+        _endPoint.Y = value.Y * (27.43 + 16.8);
+      }
+    }
 
     public WalkerLine BrownLine { get; set; }
 
     public WalkerLine GreenLine { get; set; }
 
+    public double Orientation { get; set; }
+
     public void Initialize()
     {
-      StartPoint = new Point
+      _startPoint = new Point
       {
-        X = (27.43 + 16.8) * 25,
-        Y = (27.43 + 16.8) * 25
+        X = (27.43 + 16.8) * 5,
+        Y = (27.43 + 16.8) * 40
+      };
+      _endPoint = new Point
+      {
+        X = (27.43 + 16.8) * 40,
+        Y = (27.43 + 16.8) * 10
+      };
+
+      _startRowColumn = new Point
+      {
+        X = 5,
+        Y = 40
+      };
+      _endRowColumn = new Point
+      {
+        X = 40,
+        Y = 10
       };
 
       GreenLine = new WalkerLine
