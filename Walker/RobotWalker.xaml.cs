@@ -11,14 +11,5 @@ namespace Walker
     {
       InitializeComponent();
     }
-
-    //public static readonly DependencyProperty RobotWalkerProperty = DependencyProperty.Register(
-    //  "Robot", typeof(RobotWalkerViewModel), typeof(RobotWalker), new PropertyMetadata(default(RobotWalkerViewModel)));
-
-    //public RobotWalkerViewModel Robot
-    //{
-    //  get { return (RobotWalkerViewModel)GetValue(RobotWalkerProperty); }
-    //  set { SetValue(RobotWalkerProperty, value); }
-    //}
   }
 }

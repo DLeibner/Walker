@@ -60,6 +60,7 @@
     <Compile Include="RobotWalker.xaml.cs">
       <DependentUpon>RobotWalker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RobotWalkerModel.cs" />
     <Compile Include="RobotWalkerViewModel.cs" />
     <Compile Include="TubesheetViewModel.cs" />
     <Compile Include="Window1.xaml.cs">

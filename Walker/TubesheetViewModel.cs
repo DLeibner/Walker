@@ -10,11 +10,11 @@ namespace Walker
     {
       Tubes = new List<TubeModel>();
       CanvasTubes = new ObservableCollection<CanvasTubeModel>();
-      Walker = robot;
+      Robot = robot;
       InitializeViewModel();
     }
 
-    public RobotWalkerViewModel Walker { get; set; }
+    public RobotWalkerViewModel Robot { get; set; }
 
     public double TubesheetDiameter { get; set; }
 

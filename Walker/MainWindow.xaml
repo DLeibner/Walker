@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:Walker"
         mc:Ignorable="d"
         Title="MainWindow" Height="{Binding MainWindowHeight}" Width="{Binding MainWindowWidth}">
-    <!--<Window.DataContext>
-        <local:TubesheetViewModel/>
-    </Window.DataContext>-->
 
     <ScrollViewer Height="{Binding MainWindowHeight}" Width="{Binding MainWindowWidth}"
                   VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
@@ -34,8 +31,6 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <!--<local:RobotWalker Robot ="{Binding Walker}"/>-->
-            <!--<local:RobotWalker DataContext="{Binding Source=Walker}"/>-->
             <local:RobotWalker/>
         </Canvas>
     </ScrollViewer>
