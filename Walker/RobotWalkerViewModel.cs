@@ -201,7 +201,7 @@ namespace Walker
     {
       get
       {
-        _startPoint.X = _startRowColumn.X * (_pitch + _diameter);
+        _startPoint.X = _startRowColumn.X * _pitch;
         UpdateWalkerStartPosition();
         return _startRowColumn.X;
       }
@@ -212,7 +212,7 @@ namespace Walker
     {
       get
       {
-        _startPoint.Y = _startRowColumn.Y * (_pitch + _diameter);
+        _startPoint.Y = _startRowColumn.Y * _pitch;
         UpdateWalkerStartPosition();
         return _startRowColumn.Y;
       }
@@ -223,7 +223,7 @@ namespace Walker
     {
       get
       {
-        _endPoint.X = _endRowColumn.X * (_pitch + _diameter);
+        _endPoint.X = _endRowColumn.X * _pitch;
         return _endRowColumn.X;
       }
       set => _endRowColumn.X = value;
@@ -233,7 +233,7 @@ namespace Walker
     {
       get
       {
-        _endPoint.Y = _endRowColumn.Y * (_pitch + _diameter);
+        _endPoint.Y = _endRowColumn.Y * _pitch;
         return _endRowColumn.Y;
       }
       set => _endRowColumn.Y = value;
@@ -292,13 +292,13 @@ namespace Walker
     {
       _startPoint = new Point
       {
-        X = (_pitch + _diameter) * 5,
-        Y = (_pitch + _diameter) * 40
+        X = _pitch * 5,
+        Y = _pitch * 40
       };
       _endPoint = new Point
       {
-        X = (_pitch + _diameter) * 40,
-        Y = (_pitch + _diameter) * 10
+        X = _pitch * 40,
+        Y = _pitch * 10
       };
 
       _startRowColumn = new Point

@@ -20,8 +20,6 @@ namespace Walker
 
     public double TubesheetPitch { get; set; }
 
-    public double RowColumnWidthHeight => TubesheetDiameter + TubesheetPitch;
-
     public double PanelWidth { get; set; }
 
     public double PanelHeight { get; set; }
@@ -31,7 +29,7 @@ namespace Walker
       get
       {
         var screenWidth = System.Windows.SystemParameters.WorkArea.Width;
-        var desiredWindowWidth = PanelWidth + 2 * RowColumnWidthHeight;
+        var desiredWindowWidth = PanelWidth + 2 * TubesheetPitch;
 
         return desiredWindowWidth < screenWidth ? desiredWindowWidth : screenWidth;
       }
@@ -42,7 +40,7 @@ namespace Walker
       get
       {
         var screenHeight = System.Windows.SystemParameters.WorkArea.Height - 30;
-        var desiredWindowHeight = PanelHeight + 2 * RowColumnWidthHeight;
+        var desiredWindowHeight = PanelHeight + 2 * TubesheetPitch;
 
         return desiredWindowHeight < screenHeight ? desiredWindowHeight : screenHeight;
       }
@@ -68,16 +66,16 @@ namespace Walker
       var maxRow = Tubes.Max(x => x.Row);
       var maxColumn = Tubes.Max(x => x.Column);
 
-      PanelWidth = maxRow * RowColumnWidthHeight;
-      PanelHeight = maxColumn * RowColumnWidthHeight;
+      PanelWidth = maxRow * TubesheetPitch + TubesheetDiameter;
+      PanelHeight = maxColumn * TubesheetPitch + TubesheetDiameter;
 
       foreach (var tube in Tubes)
       {
         CanvasTubes.Add(new CanvasTubeModel
         {
           Tube = tube,
-          Left = tube.Row * RowColumnWidthHeight - TubesheetDiameter/2,
-          Top = tube.Column * RowColumnWidthHeight - TubesheetDiameter/2,
+          Left = tube.Row * TubesheetPitch - TubesheetDiameter/2,
+          Top = tube.Column * TubesheetPitch - TubesheetDiameter/2,
           Size = TubesheetDiameter  // TODO bind to property here
         });
       }
