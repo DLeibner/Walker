@@ -7,6 +7,12 @@
       Initialize();
     }
 
+    private double _diameter = 16.8;
+
+    private double _pitch = 27.43;
+
+    public double Size => _diameter;
+
     public RobotWalkerModel Walker { get; set; }
 
     public double GreenX1
@@ -89,6 +95,106 @@
       }
     }
 
+    public double ToolHeadX
+    {
+      get { return Walker.ToolHead.X; }
+      set
+      {
+        Walker.ToolHead.X = value;
+        RaisePropertyChanged("ToolHeadX");
+      }
+    }
+
+    public double ToolHeadY
+    {
+      get { return Walker.ToolHead.Y; }
+      set
+      {
+        Walker.ToolHead.Y = value;
+        RaisePropertyChanged("ToolHeadY");
+      }
+    }
+
+    public double GreenPincer1X
+    {
+      get { return Walker.GreenPincer1.X; }
+      set
+      {
+        Walker.GreenPincer1.X = value;
+        RaisePropertyChanged("GreenPincer1X");
+      }
+    }
+
+    public double GreenPincer1Y
+    {
+      get { return Walker.GreenPincer1.Y; }
+      set
+      {
+        Walker.GreenPincer1.X = value;
+        RaisePropertyChanged("GreenPincer1Y");
+      }
+    }
+
+    public double GreenPincer2X
+    {
+      get { return Walker.GreenPincer2.X; }
+      set
+      {
+        Walker.GreenPincer2.X = value;
+        RaisePropertyChanged("GreenPincer2X");
+      }
+    }
+
+    public double GreenPincer2Y
+    {
+      get { return Walker.GreenPincer2.Y; }
+      set
+      {
+        Walker.GreenPincer2.X = value;
+        RaisePropertyChanged("GreenPincer2Y");
+      }
+    }
+
+    public double BrownPincer1X
+    {
+      get { return Walker.BrownPincer1.X; }
+      set
+      {
+        Walker.BrownPincer1.X = value;
+        RaisePropertyChanged("BrownPincer1X");
+      }
+    }
+
+    public double BrownPincer1Y
+    {
+      get { return Walker.BrownPincer1.Y; }
+      set
+      {
+        Walker.BrownPincer1.X = value;
+        RaisePropertyChanged("BrownPincer1Y");
+      }
+    }
+
+    public double BrownPincer2X
+    {
+      get { return Walker.BrownPincer2.X; }
+      set
+      {
+        Walker.BrownPincer2.X = value;
+        RaisePropertyChanged("BrownPincer2X");
+      }
+    }
+
+    public double BrownPincer2Y
+    {
+      get { return Walker.BrownPincer2.Y; }
+      set
+      {
+        Walker.BrownPincer2.X = value;
+        RaisePropertyChanged("BrownPincer2Y");
+      }
+    }
+
     private Point _startPoint;
     public Point StartPoint
     {
@@ -108,8 +214,8 @@
     {
       get
       {
-        _startPoint.X = _startRowColumn.X * (27.43 + 16.8);
-        _startPoint.Y = _startRowColumn.Y * (27.43 + 16.8);
+        _startPoint.X = _startRowColumn.X * (_pitch + _diameter);
+        _startPoint.Y = _startRowColumn.Y * (_pitch + _diameter);
         UpdateWalkerStartPosition();
 
         return _startRowColumn;
@@ -117,20 +223,28 @@
       set
       {
         _startRowColumn = value;
-        //_startPoint.X = value.X * (27.43 + 16.8);
-        //_startPoint.Y = value.Y * (27.43 + 16.8);
       }
     }
 
     private void UpdateWalkerStartPosition()
     {
       Walker.GreenLine.First = _startPoint;
-      Walker.GreenLine.Second.X = _startPoint.X + 384.050906;
-      Walker.GreenLine.Second.Y = _startPoint.Y - 384.050906;
-      Walker.BrownLine.First.X = _startPoint.X - 79.5395;
-      Walker.BrownLine.First.Y = _startPoint.Y - 192.025453;
-      Walker.BrownLine.Second.X = _startPoint.X + 543.13 - 79.5395;
-      Walker.BrownLine.Second.Y = _startPoint.Y - 192.025453;
+      Walker.GreenLine.Second.X = _startPoint.X + 411.472507;
+      Walker.GreenLine.Second.Y = _startPoint.Y - 411.472507;
+      Walker.BrownLine.First.X = _startPoint.X - 109.712946;
+      Walker.BrownLine.First.Y = _startPoint.Y - 219.447054;
+      Walker.BrownLine.Second.X = _startPoint.X + 548.607054;
+      Walker.BrownLine.Second.Y = _startPoint.Y - 219.447054;
+      Walker.ToolHead.X = _startPoint.X - _diameter / 2;
+      Walker.ToolHead.Y = _startPoint.Y - _diameter / 2;
+      Walker.GreenPincer1.X = _startPoint.X + 27.42160097 - _diameter / 2;
+      Walker.GreenPincer1.Y = _startPoint.Y - 27.42160097 - _diameter / 2;
+      Walker.GreenPincer2.X = Walker.GreenLine.Second.X - _diameter / 2;
+      Walker.GreenPincer2.Y = Walker.GreenLine.Second.Y - _diameter / 2;
+      Walker.BrownPincer1.X = Walker.BrownLine.First.X - _diameter / 2;
+      Walker.BrownPincer1.Y = Walker.BrownLine.First.Y - _diameter / 2;
+      Walker.BrownPincer2.X = Walker.BrownLine.Second.X - _diameter / 2;
+      Walker.BrownPincer2.Y = Walker.BrownLine.Second.Y - _diameter / 2;
     }
 
     private Point _endRowColumn;
@@ -138,31 +252,37 @@
     {
       get
       {
-        _endPoint.X = _endRowColumn.X * (27.43 + 16.8);
-        _endPoint.Y = _endRowColumn.Y * (27.43 + 16.8);
+        _endPoint.X = _endRowColumn.X * (_pitch + _diameter);
+        _endPoint.Y = _endRowColumn.Y * (_pitch + _diameter);
         return _endRowColumn;
       }
       set
       {
         _endRowColumn = value;
-        _endPoint.X = value.X * (27.43 + 16.8);
-        _endPoint.Y = value.Y * (27.43 + 16.8);
       }
     }
 
-    public double Orientation { get; set; }
+    public double Orientation
+    {
+      get { return Walker.Orientation; }
+      set
+      {
+        Walker.Orientation = value;
+        RaisePropertyChanged("Orientation");
+      }
+    }
 
     public void Initialize()
     {
       _startPoint = new Point
       {
-        X = (27.43 + 16.8) * 5,
-        Y = (27.43 + 16.8) * 40
+        X = (_pitch + _diameter) * 5,
+        Y = (_pitch + _diameter) * 40
       };
       _endPoint = new Point
       {
-        X = (27.43 + 16.8) * 40,
-        Y = (27.43 + 16.8) * 10
+        X = (_pitch + _diameter) * 40,
+        Y = (_pitch + _diameter) * 10
       };
 
       _startRowColumn = new Point

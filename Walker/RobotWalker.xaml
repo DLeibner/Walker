@@ -18,6 +18,18 @@
                 <RotateTransform Angle="0"/>
             </Line.RenderTransform>-->
         </Line>
+        <Ellipse
+            Canvas.Left="{Binding Robot.GreenPincer1X}" Canvas.Top="{Binding Robot.GreenPincer1Y}"
+            Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple">
+        </Ellipse>
+        <Ellipse
+            Canvas.Left="{Binding Robot.GreenPincer2X}" Canvas.Top="{Binding Robot.GreenPincer2Y}"
+            Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple">
+        </Ellipse>
+        <Ellipse
+            Canvas.Left="{Binding Robot.ToolHeadX}" Canvas.Top="{Binding Robot.ToolHeadY}"
+            Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Red">
+        </Ellipse>
         <Line
             X1="{Binding Robot.BrownX1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Y1="{Binding Robot.BrownY1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -30,5 +42,14 @@
                 <TranslateTransform></TranslateTransform>
             </Line.RenderTransform>-->
         </Line>
+        <Ellipse
+            Canvas.Left="{Binding Robot.BrownPincer1X}" Canvas.Top="{Binding Robot.BrownPincer1Y}"
+            Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple">
+        </Ellipse>
+        <Ellipse
+            Canvas.Left="{Binding Robot.BrownPincer2X}" Canvas.Top="{Binding Robot.BrownPincer2Y}"
+            Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple">
+        </Ellipse>
+
     </Canvas>
 </UserControl>

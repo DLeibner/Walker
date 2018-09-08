@@ -76,8 +76,8 @@ namespace Walker
         CanvasTubes.Add(new CanvasTubeModel
         {
           Tube = tube,
-          Left = tube.Row * RowColumnWidthHeight,
-          Top = tube.Column * RowColumnWidthHeight,
+          Left = tube.Row * RowColumnWidthHeight - TubesheetDiameter/2,
+          Top = tube.Column * RowColumnWidthHeight - TubesheetDiameter/2,
           Size = TubesheetDiameter  // TODO bind to property here
         });
       }
