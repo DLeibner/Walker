@@ -1,6 +1,8 @@
-﻿namespace Walker
+﻿using System.ComponentModel;
+
+namespace Walker
 {
-  public class RobotWalkerViewModel : PropertyChangedNotifier
+  public class RobotWalkerViewModel : PropertyChangedNotifier, IDataErrorInfo
   {
     public RobotWalkerViewModel()
     {
@@ -195,6 +197,48 @@
       }
     }
 
+    public double StartRow
+    {
+      get
+      {
+        _startPoint.X = _startRowColumn.X * (_pitch + _diameter);
+        UpdateWalkerStartPosition();
+        return _startRowColumn.X;
+      }
+      set => _startRowColumn.X = value;
+    }
+
+    public double StartColumn
+    {
+      get
+      {
+        _startPoint.Y = _startRowColumn.Y * (_pitch + _diameter);
+        UpdateWalkerStartPosition();
+        return _startRowColumn.Y;
+      }
+      set => _startRowColumn.Y = value;
+    }
+
+    public double EndRow
+    {
+      get
+      {
+        _endPoint.X = _endRowColumn.X * (_pitch + _diameter);
+        return _endRowColumn.X;
+      }
+      set => _endRowColumn.X = value;
+    }
+
+    public double EndColumn
+    {
+      get
+      {
+        _endPoint.Y = _endRowColumn.Y * (_pitch + _diameter);
+        return _endRowColumn.Y;
+      }
+      set => _endRowColumn.Y = value;
+    }
+
     private Point _startPoint;
     public Point StartPoint
     {
@@ -210,21 +254,6 @@
     }
 
     private Point _startRowColumn;
-    public Point StartRowColumn
-    {
-      get
-      {
-        _startPoint.X = _startRowColumn.X * (_pitch + _diameter);
-        _startPoint.Y = _startRowColumn.Y * (_pitch + _diameter);
-        UpdateWalkerStartPosition();
-
-        return _startRowColumn;
-      }
-      set
-      {
-        _startRowColumn = value;
-      }
-    }
 
     private void UpdateWalkerStartPosition()
     {
@@ -248,19 +277,6 @@
     }
 
     private Point _endRowColumn;
-    public Point EndRowColumn
-    {
-      get
-      {
-        _endPoint.X = _endRowColumn.X * (_pitch + _diameter);
-        _endPoint.Y = _endRowColumn.Y * (_pitch + _diameter);
-        return _endRowColumn;
-      }
-      set
-      {
-        _endRowColumn = value;
-      }
-    }
 
     public double Orientation
     {
@@ -298,5 +314,17 @@
 
       Walker = new RobotWalkerModel();
     }
+
+    public string this[string property]
+    {
+      get
+      {
+        string result = Validation.Validate(
+          property, _startRowColumn, _endRowColumn, Orientation);
+        return result;
+      }
+    }
+
+    public string Error => string.Empty;
   }
 }

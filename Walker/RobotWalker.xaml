@@ -19,15 +19,18 @@
             </Line.RenderTransform>-->
         </Line>
         <Ellipse
-            Canvas.Left="{Binding Robot.GreenPincer1X}" Canvas.Top="{Binding Robot.GreenPincer1Y}"
+            Canvas.Left="{Binding Robot.GreenPincer1X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Canvas.Top="{Binding Robot.GreenPincer1Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple">
         </Ellipse>
         <Ellipse
-            Canvas.Left="{Binding Robot.GreenPincer2X}" Canvas.Top="{Binding Robot.GreenPincer2Y}"
+            Canvas.Left="{Binding Robot.GreenPincer2X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Canvas.Top="{Binding Robot.GreenPincer2Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple">
         </Ellipse>
         <Ellipse
-            Canvas.Left="{Binding Robot.ToolHeadX}" Canvas.Top="{Binding Robot.ToolHeadY}"
+            Canvas.Left="{Binding Robot.ToolHeadX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Canvas.Top="{Binding Robot.ToolHeadY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Red">
         </Ellipse>
         <Line
@@ -43,11 +46,13 @@
             </Line.RenderTransform>-->
         </Line>
         <Ellipse
-            Canvas.Left="{Binding Robot.BrownPincer1X}" Canvas.Top="{Binding Robot.BrownPincer1Y}"
+            Canvas.Left="{Binding Robot.BrownPincer1X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Canvas.Top="{Binding Robot.BrownPincer1Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple">
         </Ellipse>
         <Ellipse
-            Canvas.Left="{Binding Robot.BrownPincer2X}" Canvas.Top="{Binding Robot.BrownPincer2Y}"
+            Canvas.Left="{Binding Robot.BrownPincer2X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Canvas.Top="{Binding Robot.BrownPincer2Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple">
         </Ellipse>
 

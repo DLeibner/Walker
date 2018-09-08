@@ -37,7 +37,7 @@ namespace Walker
 
         listTubes = tubes.ToList();
       }
-      catch (Exception e)
+      catch (Exception /*e*/)
       {
         throw new FileLoadException("Tube is missing data!");
       }

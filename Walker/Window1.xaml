@@ -9,6 +9,18 @@
     <Window.DataContext>
         <local:RobotWalkerViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -35,11 +47,11 @@
         <Label Grid.Row="6" Grid.Column="0" Content="Column"/>
         <Label Grid.Row="8" Grid.Column="0" Content="Walker's orientation"/>
 
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding StartRowColumn.X}"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding StartRowColumn.Y}"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding EndRowColumn.X}"/>
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding EndRowColumn.Y}"/>
-        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Orientation}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding StartRow, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding StartColumn, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding EndRow, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding EndColumn, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Orientation, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         <Button Grid.Row="9" Grid.Column="2" Content="Launch Main Window" Width="150" Click="Button_Click"/>
     </Grid>
 </Window>
