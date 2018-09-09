@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 
 namespace Walker
@@ -11,7 +13,6 @@ namespace Walker
       Tubes = new List<TubeModel>();
       CanvasTubes = new ObservableCollection<CanvasTubeModel>();
       Robot = robot;
-      InitializeViewModel();
     }
 
     public RobotWalkerViewModel Robot { get; set; }
@@ -46,25 +47,41 @@ namespace Walker
       }
     }
 
-    public List<TubeModel> Tubes { get; set; }
+    private List<TubeModel> Tubes { get; set; }
 
     public ObservableCollection<CanvasTubeModel> CanvasTubes { get; set; }
 
-    // Parse file
-    void ParseXmlFile() 
+    private void ParseXmlFile()
     {
-      var file = System.Environment.CurrentDirectory + "\\Tubesheet.xml";
-      Tubes = Parser.GetTubesFromFile(file);
-      TubesheetDiameter = Parser.Diameter;
-      TubesheetPitch = Parser.Pitch;
+      var file = Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).ToString()) + @"\Files\Tubesheet.xml";
+
+      try
+      {
+        Tubes = Parser.GetTubesFromFile(file);
+        TubesheetDiameter = Parser.Diameter;
+        TubesheetPitch = Parser.Pitch;
+      }
+      catch(Exception e)
+      {
+        string message = e.Message;
+        if (e is FileNotFoundException)
+        {
+          var fileName = (e as FileNotFoundException).FileName;
+          message = String.Format(message, fileName);
+        }
+
+        IssueError?.Invoke(this, new NotificationEventArgs(message));
+      }
     }
 
-    void InitializeViewModel()
+    public event EventHandler<NotificationEventArgs> IssueError;
+
+    public void InitializeViewModel()
     {
       ParseXmlFile();
 
-      var maxRow = Tubes.Max(x => x.Row);
-      var maxColumn = Tubes.Max(x => x.Column);
+      var maxRow = Tubes.DefaultIfEmpty().Max(x => x?.Row ?? 0);
+      var maxColumn = Tubes.DefaultIfEmpty().Max(x => x?.Column ?? 0);
 
       PanelWidth = maxRow * TubesheetPitch + TubesheetDiameter;
       PanelHeight = maxColumn * TubesheetPitch + TubesheetDiameter;
@@ -76,7 +93,7 @@ namespace Walker
           Tube = tube,
           Left = tube.Row * TubesheetPitch - TubesheetDiameter/2,
           Top = tube.Column * TubesheetPitch - TubesheetDiameter/2,
-          Size = TubesheetDiameter  // TODO bind to property here
+          Size = TubesheetDiameter
         });
       }
     }

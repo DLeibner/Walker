@@ -55,6 +55,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CanvasTubeModel.cs" />
+    <Compile Include="NotificationEventArgs.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="PropertyChangedNotifier.cs" />
     <Compile Include="RobotWalker.xaml.cs">
