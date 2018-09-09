@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Walker
 {
@@ -57,6 +58,26 @@ namespace Walker
       }
     }
 
+    public double GreenCenterX
+    {
+      get { return Walker.GreenCenter.X; }
+      set
+      {
+        Walker.GreenCenter.X = value;
+        RaisePropertyChanged("GreenCenterX");
+      }
+    }
+
+    public double GreenCenterY
+    {
+      get { return Walker.GreenCenter.Y; }
+      set
+      {
+        Walker.GreenCenter.Y = value;
+        RaisePropertyChanged("GreenCenterY");
+      }
+    }
+
     public double BrownX1
     {
       get { return Walker.BrownLine.First.X; }
@@ -94,6 +115,26 @@ namespace Walker
       {
         Walker.BrownLine.Second.Y = value;
         RaisePropertyChanged("BrownY");
+      }
+    }
+
+    public double BrownCenterX
+    {
+      get { return Walker.BrownCenter.X; }
+      set
+      {
+        Walker.BrownCenter.X = value;
+        RaisePropertyChanged("BrownCenterX");
+      }
+    }
+
+    public double BrownCenterY
+    {
+      get { return Walker.BrownCenter.Y; }
+      set
+      {
+        Walker.BrownCenter.Y = value;
+        RaisePropertyChanged("BrownCenterY");
       }
     }
 
@@ -274,17 +315,75 @@ namespace Walker
       Walker.BrownPincer1.Y = Walker.BrownLine.First.Y - _diameter / 2;
       Walker.BrownPincer2.X = Walker.BrownLine.Second.X - _diameter / 2;
       Walker.BrownPincer2.Y = Walker.BrownLine.Second.Y - _diameter / 2;
+      GreenCenterX = Walker.GreenLine.First.X + (Walker.GreenLine.Second.X - Walker.GreenLine.First.X) / 2;
+      GreenCenterY = Walker.GreenLine.First.Y + (Walker.GreenLine.Second.Y - Walker.GreenLine.First.Y) / 2;
+      BrownCenterX = Walker.BrownLine.First.X + (Walker.BrownLine.Second.X - Walker.BrownLine.First.X) / 2;
+      BrownCenterY = Walker.BrownLine.First.Y + (Walker.BrownLine.Second.Y - Walker.BrownLine.First.Y) / 2;
     }
 
     private Point _endRowColumn;
 
-    public double Orientation
+    private ObservableCollection<string> _orientation;
+    public ObservableCollection<string> Orientation
     {
-      get { return Walker.Orientation; }
+      get { return _orientation; }
       set
       {
-        Walker.Orientation = value;
+        _orientation = value;
         RaisePropertyChanged("Orientation");
+      }
+    }
+
+    public string SelectedOrientation { get; set; }
+
+    private bool _rotationSet;
+    public double RotationGreen
+    {
+      get
+      {
+        if (!_rotationSet)
+        {
+          TransformSelectedOrientationToRotation();
+          _rotationSet = true;
+        }
+        return Walker.RotationGreen - 45;
+      }
+      set
+      {
+        Walker.RotationGreen = value;
+        RaisePropertyChanged("RotationGreen");
+      }
+    }
+
+    public double RotationBrown
+    {
+      get { return Walker.RotationBrown; }
+      set
+      {
+        Walker.RotationBrown = value;
+        RaisePropertyChanged("RotationBrown");
+      }
+    }
+
+    private void TransformSelectedOrientationToRotation()
+    {
+      if (SelectedOrientation == _orientation[0])
+      {
+        Walker.RotationGreen = 45;
+      }
+      else if (SelectedOrientation == _orientation[1])
+      {
+        Walker.RotationGreen = -45;
+      }
+      else if (SelectedOrientation == _orientation[2])
+      {
+        Walker.RotationGreen = 135;
+        RotationBrown = 90;
+      }
+      else if (SelectedOrientation == _orientation[3])
+      {
+        Walker.RotationGreen = -135;
+        RotationBrown = -90;
       }
     }
 
@@ -313,6 +412,11 @@ namespace Walker
       };
 
       Walker = new RobotWalkerModel();
+
+      _orientation = new ObservableCollection<string>
+      { "Top left", "Top right", "Bottom left", "Bottom right" };
+      SelectedOrientation = _orientation[0];
+      _rotationSet = false;
     }
 
     public string this[string property]
@@ -320,7 +424,7 @@ namespace Walker
       get
       {
         string result = Validation.Validate(
-          property, _startRowColumn, _endRowColumn, Orientation);
+          property, _startRowColumn, _endRowColumn);
         return result;
       }
     }

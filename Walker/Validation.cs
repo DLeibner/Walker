@@ -2,7 +2,7 @@
 {
   public static class Validation
   {
-    public static string Validate(string property, Point start, Point end, double orientation)
+    public static string Validate(string property, Point start, Point end)
     {
       string result = string.Empty;
 
@@ -21,10 +21,6 @@
       else if (property == "EndColumn")
       {
         result = ValidateColumn(end.Y);
-      }
-      else if (property == "Orientation")
-      {
-        result = ValidateOrientation(orientation);
       }
 
       return result;
@@ -49,18 +45,6 @@
       if (row > 56 || row < 1)
       {
         result = "Selected Row is outside of working area which is from 1 to 56";
-      }
-
-      return result;
-    }
-
-    private static string ValidateOrientation(double orientation)
-    {
-      string result = string.Empty;
-
-      if (orientation < -60 || orientation > 60)
-      {
-        result = "Entered orientation is out of boundaries -60 < x < 60";
       }
 
       return result;

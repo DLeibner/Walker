@@ -11,6 +11,8 @@
       GreenPincer2 = new Point();
       BrownPincer1 = new Point();
       BrownPincer2 = new Point();
+      BrownCenter = new Point();
+      GreenCenter = new Point();
     }
 
     public WalkerLine BrownLine { get; set; }
@@ -27,7 +29,13 @@
 
     public Point BrownPincer2 { get; set; }
 
-    public double Orientation { get; set; }
+    public double RotationGreen { get; set; }
+
+    public double RotationBrown { get; set; }
+
+    public Point BrownCenter { get; set; }
+
+    public Point GreenCenter { get; set; }
   }
 
   public class WalkerLine

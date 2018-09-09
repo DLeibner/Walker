@@ -14,19 +14,24 @@
             Y2="{Binding Robot.GreenY2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Stroke="Green" StrokeThickness="5"
             StrokeStartLineCap="Round" StrokeEndLineCap="Round">
-            <!--<Line.RenderTransform>
-                <RotateTransform Angle="0"/>
-            </Line.RenderTransform>-->
+            <Line.RenderTransform>
+                <RotateTransform
+                    Angle="{Binding Robot.RotationGreen, UpdateSourceTrigger=PropertyChanged}"
+                    CenterX="{Binding Robot.GreenCenterX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    CenterY="{Binding Robot.GreenCenterY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </Line.RenderTransform>
         </Line>
         <Ellipse
             Canvas.Left="{Binding Robot.GreenPincer1X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Canvas.Top="{Binding Robot.GreenPincer1Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple">
+            Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple"
+            RenderTransformOrigin="8.082291668 8.082291668">
         </Ellipse>
         <Ellipse
             Canvas.Left="{Binding Robot.GreenPincer2X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Canvas.Top="{Binding Robot.GreenPincer2Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple">
+            Height="{Binding Robot.Size}" Width="{Binding Robot.Size}" Fill="Purple"
+            RenderTransformOrigin="-8.082291668 -8.082291668">
         </Ellipse>
         <Ellipse
             Canvas.Left="{Binding Robot.ToolHeadX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -40,10 +45,12 @@
             Y2="{Binding Robot.BrownY2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Stroke="Brown" StrokeThickness="5"
             StrokeStartLineCap="Round" StrokeEndLineCap="Round">
-            <!--<Line.RenderTransform>
-                <RotateTransform Angle="0"/>
-                <TranslateTransform></TranslateTransform>
-            </Line.RenderTransform>-->
+            <Line.RenderTransform>
+                <RotateTransform
+                    Angle="{Binding Robot.RotationBrown, UpdateSourceTrigger=PropertyChanged}"
+                    CenterX="{Binding Robot.BrownCenterX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    CenterY="{Binding Robot.BrownCenterY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </Line.RenderTransform>
         </Line>
         <Ellipse
             Canvas.Left="{Binding Robot.BrownPincer1X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
