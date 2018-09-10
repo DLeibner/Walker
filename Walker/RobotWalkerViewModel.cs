@@ -58,23 +58,23 @@ namespace Walker
       }
     }
 
-    public double GreenCenterX
+    public double GreenRotationPointX
     {
-      get { return Walker.GreenCenter.X; }
+      get { return Walker.GreenLine.RotationPoint.X; }
       set
       {
-        Walker.GreenCenter.X = value;
-        RaisePropertyChanged("GreenCenterX");
+        Walker.GreenLine.RotationPoint.X = value;
+        RaisePropertyChanged("GreenRotationPointX");
       }
     }
 
-    public double GreenCenterY
+    public double GreenRotationPointY
     {
-      get { return Walker.GreenCenter.Y; }
+      get { return Walker.GreenLine.RotationPoint.Y; }
       set
       {
-        Walker.GreenCenter.Y = value;
-        RaisePropertyChanged("GreenCenterY");
+        Walker.GreenLine.RotationPoint.Y = value;
+        RaisePropertyChanged("GreenRotationPointY");
       }
     }
 
@@ -118,23 +118,23 @@ namespace Walker
       }
     }
 
-    public double BrownCenterX
+    public double BrownRotationPointX
     {
-      get { return Walker.BrownCenter.X; }
+      get { return Walker.BrownLine.RotationPoint.X; }
       set
       {
-        Walker.BrownCenter.X = value;
-        RaisePropertyChanged("BrownCenterX");
+        Walker.BrownLine.RotationPoint.X = value;
+        RaisePropertyChanged("BrownRotationPointX");
       }
     }
 
-    public double BrownCenterY
+    public double BrownRotationPointY
     {
-      get { return Walker.BrownCenter.Y; }
+      get { return Walker.BrownLine.RotationPoint.Y; }
       set
       {
-        Walker.BrownCenter.Y = value;
-        RaisePropertyChanged("BrownCenterY");
+        Walker.BrownLine.RotationPoint.Y = value;
+        RaisePropertyChanged("BrownRotationPointY");
       }
     }
 
@@ -160,80 +160,80 @@ namespace Walker
 
     public double GreenPincer1X
     {
-      get { return Walker.GreenPincer1.X; }
+      get { return Walker.GreenPincer.First.X; }
       set
       {
-        Walker.GreenPincer1.X = value;
+        Walker.GreenPincer.First.X = value;
         RaisePropertyChanged("GreenPincer1X");
       }
     }
 
     public double GreenPincer1Y
     {
-      get { return Walker.GreenPincer1.Y; }
+      get { return Walker.GreenPincer.First.Y; }
       set
       {
-        Walker.GreenPincer1.X = value;
+        Walker.GreenPincer.First.Y = value;
         RaisePropertyChanged("GreenPincer1Y");
       }
     }
 
     public double GreenPincer2X
     {
-      get { return Walker.GreenPincer2.X; }
+      get { return Walker.GreenPincer.Second.X; }
       set
       {
-        Walker.GreenPincer2.X = value;
+        Walker.GreenPincer.Second.X = value;
         RaisePropertyChanged("GreenPincer2X");
       }
     }
 
     public double GreenPincer2Y
     {
-      get { return Walker.GreenPincer2.Y; }
+      get { return Walker.GreenPincer.Second.Y; }
       set
       {
-        Walker.GreenPincer2.X = value;
+        Walker.GreenPincer.Second.Y = value;
         RaisePropertyChanged("GreenPincer2Y");
       }
     }
 
     public double BrownPincer1X
     {
-      get { return Walker.BrownPincer1.X; }
+      get { return Walker.BrownPincer.First.X; }
       set
       {
-        Walker.BrownPincer1.X = value;
+        Walker.BrownPincer.First.X = value;
         RaisePropertyChanged("BrownPincer1X");
       }
     }
 
     public double BrownPincer1Y
     {
-      get { return Walker.BrownPincer1.Y; }
+      get { return Walker.BrownPincer.First.Y; }
       set
       {
-        Walker.BrownPincer1.X = value;
+        Walker.BrownPincer.First.Y = value;
         RaisePropertyChanged("BrownPincer1Y");
       }
     }
 
     public double BrownPincer2X
     {
-      get { return Walker.BrownPincer2.X; }
+      get { return Walker.BrownPincer.Second.X; }
       set
       {
-        Walker.BrownPincer2.X = value;
+        Walker.BrownPincer.Second.X = value;
         RaisePropertyChanged("BrownPincer2X");
       }
     }
 
     public double BrownPincer2Y
     {
-      get { return Walker.BrownPincer2.Y; }
+      get { return Walker.BrownPincer.Second.Y; }
       set
       {
-        Walker.BrownPincer2.X = value;
+        Walker.BrownPincer.Second.Y = value;
         RaisePropertyChanged("BrownPincer2Y");
       }
     }
@@ -307,18 +307,18 @@ namespace Walker
       Walker.BrownLine.Second.Y = _startPoint.Y - 219.447054;
       Walker.ToolHead.X = _startPoint.X - _diameter / 2;
       Walker.ToolHead.Y = _startPoint.Y - _diameter / 2;
-      Walker.GreenPincer1.X = _startPoint.X + 27.42160097 - _diameter / 2;
-      Walker.GreenPincer1.Y = _startPoint.Y - 27.42160097 - _diameter / 2;
-      Walker.GreenPincer2.X = Walker.GreenLine.Second.X - _diameter / 2;
-      Walker.GreenPincer2.Y = Walker.GreenLine.Second.Y - _diameter / 2;
-      Walker.BrownPincer1.X = Walker.BrownLine.First.X - _diameter / 2;
-      Walker.BrownPincer1.Y = Walker.BrownLine.First.Y - _diameter / 2;
-      Walker.BrownPincer2.X = Walker.BrownLine.Second.X - _diameter / 2;
-      Walker.BrownPincer2.Y = Walker.BrownLine.Second.Y - _diameter / 2;
-      GreenCenterX = Walker.GreenLine.First.X + (Walker.GreenLine.Second.X - Walker.GreenLine.First.X) / 2;
-      GreenCenterY = Walker.GreenLine.First.Y + (Walker.GreenLine.Second.Y - Walker.GreenLine.First.Y) / 2;
-      BrownCenterX = Walker.BrownLine.First.X + (Walker.BrownLine.Second.X - Walker.BrownLine.First.X) / 2;
-      BrownCenterY = Walker.BrownLine.First.Y + (Walker.BrownLine.Second.Y - Walker.BrownLine.First.Y) / 2;
+      Walker.GreenPincer.First.X = _startPoint.X + 27.42160097 - _diameter / 2;
+      Walker.GreenPincer.First.Y = _startPoint.Y - 27.42160097 - _diameter / 2;
+      Walker.GreenPincer.Second.X = Walker.GreenLine.Second.X - _diameter / 2;
+      Walker.GreenPincer.Second.Y = Walker.GreenLine.Second.Y - _diameter / 2;
+      Walker.BrownPincer.First.X = Walker.BrownLine.First.X - _diameter / 2;
+      Walker.BrownPincer.First.Y = Walker.BrownLine.First.Y - _diameter / 2;
+      Walker.BrownPincer.Second.X = Walker.BrownLine.Second.X - _diameter / 2;
+      Walker.BrownPincer.Second.Y = Walker.BrownLine.Second.Y - _diameter / 2;
+      GreenRotationPointX = Walker.GreenLine.First.X + (Walker.GreenLine.Second.X - Walker.GreenLine.First.X) / 2 + 27.42160097;
+      GreenRotationPointY = Walker.GreenLine.First.Y + (Walker.GreenLine.Second.Y - Walker.GreenLine.First.Y) / 2 - 27.42160097;
+      BrownRotationPointX = Walker.BrownLine.First.X + (Walker.BrownLine.Second.X - Walker.BrownLine.First.X) / 2;
+      BrownRotationPointY = Walker.BrownLine.First.Y + (Walker.BrownLine.Second.Y - Walker.BrownLine.First.Y) / 2;
     }
 
     private Point _endRowColumn;
@@ -346,22 +346,62 @@ namespace Walker
           TransformSelectedOrientationToRotation();
           _rotationSet = true;
         }
-        return Walker.RotationGreen - 45;
+        return Walker.GreenLine.Rotation - 45;
       }
       set
       {
-        Walker.RotationGreen = value;
+        Walker.GreenLine.Rotation = value;
         RaisePropertyChanged("RotationGreen");
       }
     }
 
     public double RotationBrown
     {
-      get { return Walker.RotationBrown; }
+      get { return Walker.BrownLine.Rotation; }
       set
       {
-        Walker.RotationBrown = value;
+        Walker.BrownLine.Rotation = value;
         RaisePropertyChanged("RotationBrown");
+      }
+    }
+
+    public double TranslationGreenX
+    {
+      get { return Walker.GreenLine.Translation.X; }
+      set
+      {
+        Walker.GreenLine.Translation.X = value;
+        RaisePropertyChanged("TranslationGreenX");
+      }
+    }
+
+    public double TranslationGreenY
+    {
+      get { return Walker.GreenLine.Translation.Y; }
+      set
+      {
+        Walker.GreenLine.Translation.Y = value;
+        RaisePropertyChanged("TranslationGreenY");
+      }
+    }
+
+    public double TranslationBrownX
+    {
+      get { return Walker.BrownLine.Translation.X; }
+      set
+      {
+        Walker.BrownLine.Translation.X = value;
+        RaisePropertyChanged("TranslationBrownX");
+      }
+    }
+
+    public double TranslationBrownY
+    {
+      get { return Walker.BrownLine.Translation.Y; }
+      set
+      {
+        Walker.BrownLine.Translation.Y = value;
+        RaisePropertyChanged("TranslationBrownY");
       }
     }
 
@@ -369,20 +409,20 @@ namespace Walker
     {
       if (SelectedOrientation == _orientation[0])
       {
-        Walker.RotationGreen = 45;
+        Walker.GreenLine.Rotation = 45;
       }
       else if (SelectedOrientation == _orientation[1])
       {
-        Walker.RotationGreen = -45;
+        Walker.GreenLine.Rotation = -45;
       }
       else if (SelectedOrientation == _orientation[2])
       {
-        Walker.RotationGreen = 135;
+        Walker.GreenLine.Rotation = 135;
         RotationBrown = 90;
       }
       else if (SelectedOrientation == _orientation[3])
       {
-        Walker.RotationGreen = -135;
+        Walker.GreenLine.Rotation = -135;
         RotationBrown = -90;
       }
     }

@@ -15,10 +15,17 @@
             Stroke="Green" StrokeThickness="5"
             StrokeStartLineCap="Round" StrokeEndLineCap="Round">
             <Line.RenderTransform>
-                <RotateTransform
+                <TransformGroup>
+                    <RotateTransform
                     Angle="{Binding Robot.RotationGreen, UpdateSourceTrigger=PropertyChanged}"
-                    CenterX="{Binding Robot.GreenCenterX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    CenterY="{Binding Robot.GreenCenterY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    CenterX="{Binding Robot.GreenRotationPointX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    CenterY="{Binding Robot.GreenRotationPointY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    </RotateTransform>
+                    <TranslateTransform
+                        X="{Binding Robot.TranslationGreenX}"
+                        Y="{Binding Robot.TranslationGreenY}">
+                    </TranslateTransform>
+                </TransformGroup>
             </Line.RenderTransform>
         </Line>
         <Ellipse
@@ -46,10 +53,17 @@
             Stroke="Brown" StrokeThickness="5"
             StrokeStartLineCap="Round" StrokeEndLineCap="Round">
             <Line.RenderTransform>
-                <RotateTransform
-                    Angle="{Binding Robot.RotationBrown, UpdateSourceTrigger=PropertyChanged}"
-                    CenterX="{Binding Robot.BrownCenterX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    CenterY="{Binding Robot.BrownCenterY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TransformGroup>
+                    <RotateTransform
+                        Angle="{Binding Robot.RotationBrown, UpdateSourceTrigger=PropertyChanged}"
+                        CenterX="{Binding Robot.BrownRotationPointX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        CenterY="{Binding Robot.BrownRotationPointY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    </RotateTransform>
+                    <TranslateTransform
+                        X="{Binding Robot.TranslationBrownX}"
+                        Y="{Binding Robot.TranslationBrownY}">
+                    </TranslateTransform>
+                </TransformGroup>
             </Line.RenderTransform>
         </Line>
         <Ellipse

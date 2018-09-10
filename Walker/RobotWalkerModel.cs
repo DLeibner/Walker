@@ -4,51 +4,43 @@
   {
     public RobotWalkerModel()
     {
-      BrownLine = new WalkerLine();
-      GreenLine = new WalkerLine();
+      BrownLine = new WalkerPart();
+      GreenLine = new WalkerPart();
       ToolHead = new Point();
-      GreenPincer1 = new Point();
-      GreenPincer2 = new Point();
-      BrownPincer1 = new Point();
-      BrownPincer2 = new Point();
-      BrownCenter = new Point();
-      GreenCenter = new Point();
+      GreenPincer = new WalkerPart();
+      BrownPincer = new WalkerPart();
     }
 
-    public WalkerLine BrownLine { get; set; }
+    public WalkerPart BrownLine { get; set; }
 
-    public WalkerLine GreenLine { get; set; }
+    public WalkerPart GreenLine { get; set; }
 
     public Point ToolHead { get; set; }
 
-    public Point GreenPincer1 { get; set; }
+    public WalkerPart GreenPincer { get; set; }
 
-    public Point GreenPincer2 { get; set; }
-
-    public Point BrownPincer1 { get; set; }
-
-    public Point BrownPincer2 { get; set; }
-
-    public double RotationGreen { get; set; }
-
-    public double RotationBrown { get; set; }
-
-    public Point BrownCenter { get; set; }
-
-    public Point GreenCenter { get; set; }
+    public WalkerPart BrownPincer { get; set; }
   }
 
-  public class WalkerLine
+  public class WalkerPart
   {
-    public WalkerLine()
+    public WalkerPart()
     {
       First = new Point();
       Second = new Point();
+      RotationPoint = new Point();
+      Translation = new Point();
     }
 
     public Point First { get; set; }
 
     public Point Second { get; set; }
+
+    public Point RotationPoint { get; set; }
+
+    public double Rotation { get; set; }
+
+    public Point Translation { get; set; }
   }
 
   public class Point
