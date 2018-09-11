@@ -58,6 +58,7 @@
     <Compile Include="NotificationEventArgs.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="PropertyChangedNotifier.cs" />
+    <Compile Include="RobotMovement.cs" />
     <Compile Include="RobotWalker.xaml.cs">
       <DependentUpon>RobotWalker.xaml</DependentUpon>
     </Compile>

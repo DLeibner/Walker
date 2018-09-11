@@ -17,13 +17,13 @@
             <Line.RenderTransform>
                 <TransformGroup>
                     <RotateTransform
-                    Angle="{Binding Robot.RotationGreen, UpdateSourceTrigger=PropertyChanged}"
-                    CenterX="{Binding Robot.GreenRotationPointX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    CenterY="{Binding Robot.GreenRotationPointY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        Angle="{Binding Robot.RotationGreen, UpdateSourceTrigger=PropertyChanged}"
+                        CenterX="{Binding Robot.GreenRotationPointX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        CenterY="{Binding Robot.GreenRotationPointY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </RotateTransform>
                     <TranslateTransform
-                        X="{Binding Robot.TranslationGreenX}"
-                        Y="{Binding Robot.TranslationGreenY}">
+                        X="{Binding Robot.TranslationGreenX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Y="{Binding Robot.TranslationGreenY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </TranslateTransform>
                 </TransformGroup>
             </Line.RenderTransform>
@@ -60,8 +60,8 @@
                         CenterY="{Binding Robot.BrownRotationPointY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </RotateTransform>
                     <TranslateTransform
-                        X="{Binding Robot.TranslationBrownX}"
-                        Y="{Binding Robot.TranslationBrownY}">
+                        X="{Binding Robot.TranslationBrownX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Y="{Binding Robot.TranslationBrownY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </TranslateTransform>
                 </TransformGroup>
             </Line.RenderTransform>

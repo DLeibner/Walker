@@ -16,7 +16,7 @@ namespace Walker
 
     public double Size => _diameter;
 
-    public RobotWalkerModel Walker { get; set; }
+    private RobotWalkerModel Walker { get; set; }
 
     public double GreenX1
     {
