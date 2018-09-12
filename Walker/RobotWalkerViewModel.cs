@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Timers;
 
 namespace Walker
 {
@@ -12,7 +13,7 @@ namespace Walker
 
     private double _diameter = 16.8;
 
-    private double _pitch = 27.43;
+    public readonly double Pitch = 27.43;
 
     public double Size => _diameter;
 
@@ -242,7 +243,7 @@ namespace Walker
     {
       get
       {
-        _startPoint.X = _startRowColumn.X * _pitch;
+        _startPoint.X = _startRowColumn.X * Pitch;
         UpdateWalkerStartPosition();
         return _startRowColumn.X;
       }
@@ -253,7 +254,7 @@ namespace Walker
     {
       get
       {
-        _startPoint.Y = _startRowColumn.Y * _pitch;
+        _startPoint.Y = _startRowColumn.Y * Pitch;
         UpdateWalkerStartPosition();
         return _startRowColumn.Y;
       }
@@ -264,7 +265,7 @@ namespace Walker
     {
       get
       {
-        _endPoint.X = _endRowColumn.X * _pitch;
+        _endPoint.X = _endRowColumn.X * Pitch;
         return _endRowColumn.X;
       }
       set => _endRowColumn.X = value;
@@ -274,7 +275,7 @@ namespace Walker
     {
       get
       {
-        _endPoint.Y = _endRowColumn.Y * _pitch;
+        _endPoint.Y = _endRowColumn.Y * Pitch;
         return _endRowColumn.Y;
       }
       set => _endRowColumn.Y = value;
@@ -315,13 +316,20 @@ namespace Walker
       Walker.BrownPincer.First.Y = Walker.BrownLine.First.Y - _diameter / 2;
       Walker.BrownPincer.Second.X = Walker.BrownLine.Second.X - _diameter / 2;
       Walker.BrownPincer.Second.Y = Walker.BrownLine.Second.Y - _diameter / 2;
-      GreenRotationPointX = Walker.GreenLine.First.X + (Walker.GreenLine.Second.X - Walker.GreenLine.First.X) / 2 + 27.42160097;
-      GreenRotationPointY = Walker.GreenLine.First.Y + (Walker.GreenLine.Second.Y - Walker.GreenLine.First.Y) / 2 - 27.42160097;
+      GreenRotationPointX = Walker.GreenLine.Second.X - 192.025453;
+      GreenRotationPointY = Walker.GreenLine.Second.Y + 192.025453;
       BrownRotationPointX = Walker.BrownLine.First.X + (Walker.BrownLine.Second.X - Walker.BrownLine.First.X) / 2;
       BrownRotationPointY = Walker.BrownLine.First.Y + (Walker.BrownLine.Second.Y - Walker.BrownLine.First.Y) / 2;
+      IntersectionPoint = new Point
+      {
+        X = Walker.GreenLine.RotationPoint.X,
+        Y = Walker.GreenLine.RotationPoint.Y
+      };
     }
 
     private Point _endRowColumn;
+
+    public Point IntersectionPoint { get; set; }
 
     private ObservableCollection<string> _orientation;
     public ObservableCollection<string> Orientation
@@ -405,7 +413,7 @@ namespace Walker
       }
     }
 
-    private void TransformSelectedOrientationToRotation()
+    public void TransformSelectedOrientationToRotation()
     {
       if (SelectedOrientation == _orientation[0])
       {
@@ -431,24 +439,24 @@ namespace Walker
     {
       _startPoint = new Point
       {
-        X = _pitch * 5,
-        Y = _pitch * 40
+        X = Pitch * 40,
+        Y = Pitch * 40
       };
       _endPoint = new Point
       {
-        X = _pitch * 40,
-        Y = _pitch * 10
+        X = Pitch * 10,
+        Y = Pitch * 40
       };
 
       _startRowColumn = new Point
       {
-        X = 5,
+        X = 40,
         Y = 40
       };
       _endRowColumn = new Point
       {
-        X = 40,
-        Y = 10
+        X = 10,
+        Y = 40
       };
 
       Walker = new RobotWalkerModel();
@@ -458,6 +466,8 @@ namespace Walker
       SelectedOrientation = _orientation[0];
       _rotationSet = false;
     }
+
+    public Timer Timer;
 
     public string this[string property]
     {
